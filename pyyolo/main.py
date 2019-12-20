@@ -1,5 +1,6 @@
 import cv2
 import numpy as np
+import sys
 
 net =  cv2.dnn.readNet('yolov3.weights','yolov3.cfg')
 classes = []
@@ -15,7 +16,7 @@ colors= np.random.uniform(0,255,size=(len(classes),3))
 font = cv2.FONT_HERSHEY_PLAIN
 
 #source of your image
-img = cv2.imread('nature.jpg')
+img = cv2.imread(sys.argv[1])
 
 height,width,channels = img.shape
 blob = cv2.dnn.blobFromImage(img,0.00392,(416,416),(0,0,0),True,crop=False)
